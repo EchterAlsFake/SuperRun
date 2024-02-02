@@ -22,9 +22,9 @@ from datetime import datetime
 
 WIDTH = 1280
 HEIGHT = 720
+BACKGROUND = (255, 255, 255)
 tile_width = 32
 tile_height = 32
-BACKGROUND = (0, 0, 0)
 
 
 def logger_debug(e):
@@ -148,9 +148,11 @@ class Box(Sprite):
 def main():
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    clock = pygame.time.Clock()
-    background = pygame.image.load("assets/PNG/environment/layers/back.png")
     tileset = pygame.image.load("assets/PNG/environment/layers/tileset.png")
+    clock = pygame.time.Clock()
+    tile = get_tile(tileset=tileset, height=200, width=200, x=0, y=0)
+    background = create_background(tile, 640, 480)
+
     logger_debug("Initialized Screen")
 
     player = Player(100, 200)
